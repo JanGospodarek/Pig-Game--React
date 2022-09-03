@@ -9,10 +9,30 @@ import classes from "./Game.module.css";
 import Dice from "./Dice";
 import Player from "./Player";
 function Game() {
+  const players = [
+    {
+      id: 1,
+      score: 1,
+      currentScore: 0,
+    },
+    {
+      id: 2,
+      score: 2,
+      currentScore: 0,
+    },
+  ];
   return (
     <main>
-      <Player></Player>
-      <Player></Player>
+      <Player
+        id={players[0].id}
+        score={players[0].score}
+        currentScore={players[0].currentScore}
+      ></Player>
+      <Player
+        id={players[1].id}
+        score={players[1].score}
+        currentScore={players[1].currentScore}
+      ></Player>
       <Dice dice={diceFive}></Dice>
       <Controls></Controls>
     </main>
