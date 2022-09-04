@@ -13,6 +13,12 @@ function Game() {
   function roll() {
     dispatch(gameActions.diceRoll());
   }
+  function hold() {
+    dispatch(gameActions.hold());
+  }
+  function reset() {
+    dispatch(gameActions.reset());
+  }
   return (
     <main>
       {players.map((player, index) => (
@@ -26,7 +32,7 @@ function Game() {
       ))}
 
       <Dice dice={dice}></Dice>
-      <Controls roll={roll}></Controls>
+      <Controls roll={roll} hold={hold} reset={reset}></Controls>
     </main>
   );
 }
