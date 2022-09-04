@@ -16,7 +16,7 @@ const initialGameState = {
   dice: 1,
 };
 const gameSlice = createSlice({
-  name: "counter",
+  name: "game",
   initialState: initialGameState,
   reducers: {},
 });
