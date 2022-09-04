@@ -18,7 +18,15 @@ const initialGameState = {
 const gameSlice = createSlice({
   name: "game",
   initialState: initialGameState,
-  reducers: {},
+  reducers: {
+    diceRoll(state) {
+      state.dice = Math.trunc(Math.random() * 6);
+      if (state.dice === 0)
+        state.activePlayer === 0
+          ? (state.activePlayer = 1)
+          : (state.activePlayer = 0);
+    },
+  },
 });
 
 const store = configureStore({

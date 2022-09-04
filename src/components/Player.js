@@ -1,7 +1,9 @@
 import classes from "./Player.module.css";
 function Player(props) {
   return (
-    <section className={classes.player}>
+    <section
+      className={`${classes.player} ${props.isActive && classes.playerActive}`}
+    >
       <h2 className={classes.name} id={`name--${props.id}`}>
         {`Player ${props.id}`}
       </h2>

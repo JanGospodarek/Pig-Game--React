@@ -7,10 +7,9 @@ import diceFour from "../images/dice-4.png";
 import diceFive from "../images/dice-5.png";
 import diceSix from "../images/dice-6.png";
 import { useSelector } from "react-redux";
-function Dice() {
-  const dice = useSelector((state) => state.game.dice);
+function Dice(props) {
   let selectedDice;
-  switch (dice) {
+  switch (props.dice) {
     case 0:
       selectedDice = diceOne;
       break;
