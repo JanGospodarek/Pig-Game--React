@@ -12,6 +12,7 @@ function Controls(props) {
       <button onClick={props.hold} className={classes.btnHold}>
         📥 Hold
       </button>
+      //wow
     </React.Fragment>
   );
 }
