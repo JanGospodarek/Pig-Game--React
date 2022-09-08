@@ -7,6 +7,14 @@ function changePlayer(state) {
 function clearPlayerCurScore(state) {
   state.players[state.activePlayer].currentScore = 0;
 }
+function resetGame(state) {
+  state.players.map((player) => {
+    player.score = 0;
+    player.currentScore = 0;
+  });
+  state.activePlayer = 0;
+  state.dice = Math.trunc(Math.random() * 6);
+}
 const initialGameState = {
   players: [
     {
@@ -21,6 +29,7 @@ const initialGameState = {
     },
   ],
   activePlayer: 0,
+  winner: undefined,
   dice: Math.trunc(Math.random() * 6),
 };
 const gameSlice = createSlice({
@@ -39,16 +48,16 @@ const gameSlice = createSlice({
     hold(state) {
       state.players[state.activePlayer].score +=
         state.players[state.activePlayer].currentScore;
+      if (state.players[state.activePlayer].score >= 50) {
+        state.winner = state.players[state.activePlayer].id;
+        alert(`Winner is player ${state.winner}`);
+        resetGame(state);
+      }
       clearPlayerCurScore(state);
       changePlayer(state);
     },
     reset(state) {
-      state.players.map((player) => {
-        player.score = 0;
-        player.currentScore = 0;
-      });
-      state.activePlayer = 0;
-      state.dice = Math.trunc(Math.random() * 6);
+      resetGame(state);
     },
   },
 });
