@@ -4,12 +4,15 @@ import Dice from "./Dice";
 import Player from "./Player";
 import { gameActions } from "../store";
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 function Game() {
   const dispatch = useDispatch();
   const players = useSelector((state) => state.game.players);
   const activePlayer = useSelector((state) => state.game.activePlayer);
   const dice = useSelector((state) => state.game.dice);
-
+  useEffect(() => {
+    alert("Wins player who first score 100 points");
+  }, []);
   function roll() {
     dispatch(gameActions.diceRoll());
   }
